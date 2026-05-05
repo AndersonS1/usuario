@@ -1,10 +1,7 @@
 package com.agendador.usuario.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
@@ -15,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity // para apontar que essa classe é uma tabela
 @Table(name="usuario")  // anotação para indicar o nome da tabela
+@Builder
 
 public class Usuario { //implements UserDetails
     // na criação da tabela, as anotações @Id, @GeneratedValue(strategy = GenerationType.IDENTITY) e private long id; - SÃO PADRÃO.

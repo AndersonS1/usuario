@@ -1,10 +1,7 @@
 package com.agendador.usuario.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity // para apontar que essa classe é uma tabela
 @Table(name="telefones")  // anotação para indicar o nome da tabela
+@Builder
 
 public class Telefone {
     // na criação da tabela, as anotações @Id, @GeneratedValue(strategy = GenerationType.IDENTITY) e private long id; - SÃO PADRÃO.
