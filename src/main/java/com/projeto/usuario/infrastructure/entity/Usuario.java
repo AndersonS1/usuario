@@ -45,4 +45,6 @@ public class Usuario { //implements UserDetails
     public String getUsername() {
         return email;
     }
+
+    //public List<Endereco> getEnderecos() {}
 }
