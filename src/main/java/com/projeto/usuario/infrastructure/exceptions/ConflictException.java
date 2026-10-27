@@ -1,4 +1,4 @@
-package com.javanauta.aprendendo_spring.infrastructure.exceptions;
+package com.projeto.usuario.infrastructure.exceptions;
 
 
 // CLasse criada para verificar conflitos
