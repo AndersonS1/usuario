@@ -1,8 +1,9 @@
 package com.projeto.usuario.controller;
 
 import com.projeto.usuario.business.UsuarioService;
+import com.projeto.usuario.business.dto.EnderecoDTO;
+import com.projeto.usuario.business.dto.TelefoneDTO;
 import com.projeto.usuario.business.dto.UsuarioDTO;
-import com.projeto.usuario.infrastructure.entity.Usuario;
 import com.projeto.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscarUsuarioPorEmail(@RequestParam("email") String email){
+    public ResponseEntity<UsuarioDTO> buscarUsuarioPorEmail(@RequestParam("email") String email){
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
 
@@ -44,5 +45,23 @@ public class UsuarioController {
     public ResponseEntity<Void> deletaUsuarioPorEmail(@PathVariable String email){
         usuarioService.deletaUsuarioPorEmail(email);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<UsuarioDTO> atualizaDadoUsuario(@RequestBody UsuarioDTO dto,
+                                                         @RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token,dto));
+    }
+
+    @PutMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> atualizaDadoUsuario(@RequestBody EnderecoDTO dto,
+                                                           @RequestHeader("id") Long id){
+        return ResponseEntity.ok(usuarioService.atualizaEndereco(id,dto));
+    }
+
+    @PutMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> atualizaTelefone(@RequestBody TelefoneDTO dto,
+                                                           @RequestHeader("id") Long id){
+        return ResponseEntity.ok(usuarioService.atualizaTelefone(id,dto));
     }
 }
